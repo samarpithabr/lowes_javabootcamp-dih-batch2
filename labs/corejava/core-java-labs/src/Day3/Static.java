@@ -3,6 +3,8 @@ class Student{
 	String name;
 	int id;
 	static String school="sct";
+	static int schoolStrength=30;
+	final String schoollocation="mangnalli";
 }
 
 public class Static {
@@ -12,7 +14,9 @@ public class Static {
 Student std=new Student();
 std.name="sam";
 std.id=92;
-System.out.println("name  "+std.name+"id  "+std.id+"school  "+Student.school);
+std.schoolStrength++;
+System.out.println("name  "+std.name+"id  "+std.id+"school  "+Student.school+"SchoolStrength "+Student.schoolStrength  
+		+ "schoollocation " +std.schoollocation);
 	}
 
 }

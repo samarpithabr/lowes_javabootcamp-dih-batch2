@@ -7,13 +7,13 @@ public class Demo4 {
 System.out.println("Permormance testing");
 long starttime=System.currentTimeMillis();
 StringBuffer sbuffer=new StringBuffer("Hello");
-for(int i=0;i<1000000;i++) {
+for(int i=0;i<100000;i++) {
 	sbuffer.append("World");
 	
 }
 System.out.println("sys time for Stringbuffer"+(System.currentTimeMillis() - starttime + " ms"));
 StringBuilder sbulder=new StringBuilder("Hello");
-for(int i=0;i<1000000;i++) {
+for(int i=0;i<100000;i++) {
 	sbuffer.append("World");
 	
 }

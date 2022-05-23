@@ -12,6 +12,9 @@ for (int i : a) {
 	System.out.println(i);
 	
 }
+/*find min number of the int array
+ * 
+ */
 	}
 
 }

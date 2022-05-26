@@ -1,4 +1,4 @@
-package employeeMain;
+package model;
 
 public class Employee {
 	int EmpId;
@@ -7,6 +7,8 @@ public class Employee {
 	String designation;
 	String department;
 	String country;
+	
+	
 	public int getEmpId() {
 		return EmpId;
 	}
@@ -42,6 +44,11 @@ public class Employee {
 	}
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public String toString() {
+		return "Empid "+EmpId+"Name"+Name+"Age"+age+"Designation"+designation+"Department"+department+"Country"+country;
+		
 	}
 
 	}

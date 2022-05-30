@@ -1,12 +1,6 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
@@ -16,8 +10,7 @@ import java.util.TreeMap;
 import exception.EmployeeException;
 import model.Employee;
 
-public class EmployeeServiceColImpl {
-
+public class EmployeeServiceImpl {
 	TreeMap<Integer, Employee> mapcrea = new TreeMap<>();
 	Scanner scanner = new Scanner(System.in);
 	Employee emp = new Employee();
@@ -42,7 +35,7 @@ public class EmployeeServiceColImpl {
 
 	}
 
-	public void delete(int empIdInteger) throws EmployeeException {
+	public void delete(int empIdInteger)  {
 		System.out.println("enter the id to be deleted");
 		int empiid = scanner.nextInt();
 		if (empIdInteger == empiid)
@@ -66,9 +59,12 @@ public class EmployeeServiceColImpl {
 
 	}
 
-	public int createEmployee() throws EmployeeException {
+	public int createEmployee()  {
 		Employee emp = new Employee();
 		int empIdInteger = random.nextInt(20);
+		System.out.println("enter employee salary");
+		int salry=scanner.nextInt();
+		emp.setSalary(salry);
 		System.out.println("Enter Employee Name ");
 		String empName = scanner.next();
 		emp.setName(empName);

@@ -1,15 +1,16 @@
 package service;
 
-import java.util.Map;
+import java.util.List;
 
+import exception.EmployeeException;
 import model.Employee;
 
 public interface EmployeeService {
 
 	
 		// TODO Auto-generated method stub
-		int  add(Employee s);
-        void ViewAll(int e);
+		int  createEmployee();
+        void ViewAll(int emp);
 		void update();
 		
 	

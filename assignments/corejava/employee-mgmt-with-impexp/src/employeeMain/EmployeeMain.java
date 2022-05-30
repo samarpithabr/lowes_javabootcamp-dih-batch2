@@ -1,18 +1,19 @@
-package empapp;
+package employeeMain;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import exception.EmployeeException;
 import model.Employee;
-import service.EmployeeService;
-import service.EmployeeServiceColImpl;
 
-public class EmployeeMain {
+import service.EmployeeServiceImpl;
+
+public class EmployeeMain  {
 
 	public static void main(String[] args) {
 		int count = 0;
@@ -20,31 +21,30 @@ public class EmployeeMain {
 		Random random = new Random();
 		int empIdInteger = random.nextInt(20);
 		TreeMap<Integer, Employee> mapcrea = new TreeMap<Integer, Employee>();
-		// Map<Integer,Employee> map=new TreeMap<>();
-		EmployeeServiceColImpl empser = new EmployeeServiceColImpl();
+	
+		EmployeeServiceImpl empser = new EmployeeServiceImpl();
 		Scanner scanner = new Scanner(System.in);
+		
+		ExecutorService exeSrvice= Executors.newFixedThreadPool(3);
 
 		do {
 			System.out.println("1.  Add Employee");
 			System.out.println("2.  View Employee");
 			System.out.println("3.  Delete Employee");
 			System.out.println("4.  update Employee");
+			System.out.println("5.  Import");
+			System.out.println("6. Export");
 
 			System.out.println("Enter the option: ");
 			int option = scanner.nextInt();
 			switch (option) {
 			case 1:
-				try {
-					empIdInteger = empser.createEmployee();
-				} catch (EmployeeException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				empIdInteger = empser.createEmployee();
 				count++;
 				break;
 			case 2:
 
-				empser.viewAll(empIdInteger);
+				empser.ViewAll(empIdInteger);
 				count++;
 				break;
 
@@ -60,7 +60,29 @@ public class EmployeeMain {
 				break;
 			case 4:
 				empser.update();
-
+count++;
+break;
+			case 5:Future<Boolean> future = exeSrvice.submit(new Callable<Boolean>() {
+				@Override
+				public Boolean call() throws Exception {
+					Thread.sleep(100);
+					empser.Import();
+					return true;
+				}						
+			});
+		
+			break;
+			
+			case 6:Future<Boolean> future1 = exeSrvice.submit(new Callable<Boolean>() {
+				@Override
+				public Boolean call() throws Exception {
+					Thread.sleep(200);
+					empser.Export();		
+					return true;
+				}						
+			});	
+			exeSrvice.shutdown();
+			break;
 			}
 			// TODO Auto-generated method stub
 

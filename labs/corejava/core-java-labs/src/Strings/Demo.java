@@ -26,7 +26,7 @@ public class Demo {
 		s2.concat("br");
 		System.out.println(s2);
 		String s3 = s1.concat("sharath");
-		System.out.println(s3);
+		System.out.println("s3"+s3);
 		/*
 		 * equals in string compare the contents or value of the string
 		 * if capital letter mismatch it gives false
@@ -34,7 +34,7 @@ public class Demo {
 		 * f2 and f4(even its stored in object form its value is same so returns true)
 		 * if it mismatch it returns false
 		 */
-		
+		System.out.println("equalll");
 		String f1="sam";
 		String f2="mark";
 		String f3="sam";
@@ -43,7 +43,7 @@ public class Demo {
 		String f6="mark";
 		String f7=new String("arpitha");
 		System.out.println("equalls");
-		System.out.println(f6.CASE_INSENSITIVE_ORDER.equals(f2));
+		System.out.println(f6.equalsIgnoreCase(f2));
 		System.out.println(f2.equals(f4));
 		System.out.println(f1.equals(f3));
 		System.out.println(f4.equals(f5));

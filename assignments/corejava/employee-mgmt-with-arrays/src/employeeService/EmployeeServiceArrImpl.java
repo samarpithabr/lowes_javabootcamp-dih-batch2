@@ -41,23 +41,23 @@ public class EmployeeServiceArrImpl implements EmployeeService {
 		Employee s1 = new Employee();
 		System.out.println("enter employee id");
 		int empId = scanner1.nextInt();
-		s1.setEmpId(empId);
+		s.setEmpId(empId);
 		System.out.println("Enter Employee Name ");
 		String empName = scanner1.next();
-		s1.setName(empName);
+		s.setName(empName);
 		System.out.println("Enter Employee Age ");
 		int empAge = scanner1.nextInt();
-		s1.setAge(empAge);
+		s.setAge(empAge);
 		System.out.println("Enter Employee Designation ");
 		String empDesignation = scanner1.next();
-		s1.setDesignation(empDesignation);
+		s.setDesignation(empDesignation);
 		System.out.println("Enter Employee Department ");
 		String empDepartment = scanner1.next();
-		s1.setDepartment(empDepartment);
+		s.setDepartment(empDepartment);
 		System.out.println("Enter Employee Country ");
 		String empCountry = scanner1.next();
-		s1.setCountry(empCountry);
-		create(s1);
+		s.setCountry(empCountry);
+		create(s);
 
 	}
 

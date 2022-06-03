@@ -38,7 +38,6 @@ public class EmployeeServiceColImpl {
 
 	public void viewAll(int empIdInteger) {
 		displayMapEntries(mapcrea.entrySet());
-		System.out.println(mapcrea.size());
 
 	}
 
@@ -46,23 +45,33 @@ public class EmployeeServiceColImpl {
 		System.out.println("enter the id to be deleted");
 		int empiid = scanner.nextInt();
 		if (empIdInteger == empiid)
-			;
+
 		{
 			mapcrea.remove(empiid);
 			System.out.println("Employee with id given deleted");
-			System.out.println(mapcrea.size());
+
 		}
 	}
 
 	public void update() {
-		System.out.println("enter the id to be updated");
+		System.out.println("Enter the id to be updated");
 		int empiid = scanner.nextInt();
-		System.out.println("enter the id to be updated");
+		System.out.println("Enter the name ");
+		String nam = scanner.next();
+		emp.setName(nam);
+		System.out.println("Enter the age to be updated");
 		int empiupdate = scanner.nextInt();
-
+		emp.setAge(empiupdate);
+		System.out.println("Enter the designation");
+		String desig = scanner.next();
+		emp.setDesignation(desig);
+		System.out.println("Enter department");
+		String dep = scanner.next();
+		emp.setDepartment(dep);
+		System.out.println("Enter the country");
+		String count = scanner.next();
+		emp.setCountry(count);
 		mapcrea.replace(empiid, emp);
-		System.out.println("Employee with id given deleted");
-		System.out.println(mapcrea.size());
 
 	}
 
@@ -88,7 +97,7 @@ public class EmployeeServiceColImpl {
 		System.out.println(mapcrea.size());
 		displayMapEntries(mapcrea.entrySet());
 		return empIdInteger;
-		// return mapcrea;
+
 	}
 
 }

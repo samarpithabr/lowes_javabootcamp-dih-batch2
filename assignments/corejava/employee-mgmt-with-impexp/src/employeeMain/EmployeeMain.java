@@ -16,7 +16,7 @@ import service.EmployeeServiceImpl;
 public class EmployeeMain  {
 
 	public static void main(String[] args) {
-		int count = 0;
+	Boolean entered=true;
 		Employee emp = new Employee();
 		Random random = new Random();
 		int empIdInteger = random.nextInt(20);
@@ -40,13 +40,12 @@ public class EmployeeMain  {
 			switch (option) {
 			case 1:
 				empIdInteger = empser.createEmployee();
-				count++;
+			
 				break;
 			case 2:
 
 				empser.ViewAll(empIdInteger);
-				count++;
-				break;
+					break;
 
 			case 3:
 
@@ -56,17 +55,17 @@ public class EmployeeMain  {
 					// TODO Auto-generated catch block
 					System.out.println("Invallid Empid");
 				}
-				count++;
+				
 				break;
 			case 4:
 				empser.update();
-count++;
-break;
+
+            break;
 			case 5:Future<Boolean> future = exeSrvice.submit(new Callable<Boolean>() {
 				@Override
 				public Boolean call() throws Exception {
 					Thread.sleep(100);
-					empser.Import();
+					empser.bulkImport();
 					return true;
 				}						
 			});
@@ -86,7 +85,7 @@ break;
 			}
 			// TODO Auto-generated method stub
 
-		} while (count < 8);
+		} while (entered);
 
 	}
 }

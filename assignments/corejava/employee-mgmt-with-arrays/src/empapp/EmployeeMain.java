@@ -45,8 +45,8 @@ public class EmployeeMain {
 			System.out.println("1.  Add Employee");
 			System.out.println("2.  View Employee");
 			System.out.println("3.  Update Employee");
-			System.out.println("4.  Delete Employee");
-			System.out.println("5.  View All Employee");
+			
+		
 			System.out.println("Enter the option: ");
 			int option = scanner.nextInt();
 			switch (option) {

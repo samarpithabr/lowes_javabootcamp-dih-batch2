@@ -20,7 +20,7 @@ import java.util.TreeMap;
 import exception.EmployeeException;
 import model.Employee;
 
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 	TreeMap<Integer, Employee> mapcrea = new TreeMap<>();
 	Scanner scanner = new Scanner(System.in);
 	Employee emp = new Employee();
@@ -38,13 +38,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 		System.out.println();
 	}
+
 	@Override
-public void ViewAll(int empIdInteger) {
+	public void ViewAll(int empIdInteger) {
 		displayMapEntries(mapcrea.entrySet());
 		System.out.println(mapcrea.size());
 
 	}
-
 
 	public void delete(int empIdInteger) throws EmployeeException {
 		System.out.println("enter the id to be deleted");
@@ -59,17 +59,27 @@ public void ViewAll(int empIdInteger) {
 	}
 
 	public void update() {
-		System.out.println("enter the id to be updated");
+		System.out.println("Enter the id to be updated");
 		int empiid = scanner.nextInt();
-		System.out.println("enter the id to be updated");
+		System.out.println("Enter the name ");
+		String nam = scanner.next();
+		emp.setName(nam);
+		System.out.println("Enter the age to be updated");
 		int empiupdate = scanner.nextInt();
-
+		emp.setAge(empiupdate);
+		System.out.println("Enter the designation");
+		String desig = scanner.next();
+		emp.setDesignation(desig);
+		System.out.println("Enter department");
+		String dep = scanner.next();
+		emp.setDepartment(dep);
+		System.out.println("Enter the country");
+		String count = scanner.next();
+		emp.setCountry(count);
 		mapcrea.replace(empiid, emp);
-		System.out.println("Employee with id given deleted");
-		System.out.println(mapcrea.size());
-
 	}
-@Override
+
+	@Override
 	public int createEmployee() {
 		Employee emp = new Employee();
 		int empIdInteger = random.nextInt(20);
@@ -92,46 +102,41 @@ public void ViewAll(int empIdInteger) {
 		System.out.println(mapcrea.size());
 		displayMapEntries(mapcrea.entrySet());
 		return empIdInteger;
-	
+
 	}
 
-	
-	public void Import() {
+	public void bulkImport() {
 		System.out.println("Thread Name:" + Thread.currentThread().getName());
-		String filePath = "D:\\\\Temp\\\\inputfile.txt";
-	
+		String filePath = "inputfile.txt";
+
 		String line;
 		BufferedReader reader = null;
 		try {
-			reader = new BufferedReader(new FileReader(filePath));
+		reader = new BufferedReader(new FileReader(filePath));
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
+		e1.printStackTrace();
 		}
 		try {
-			while ((line = reader.readLine()) != null) {
-				String[] spell = line.split(",");
-				
-				if (spell.length >= 0) {
-					emp = new Employee();
-					emp.setName(spell[0]);
-					emp.setAge(Integer.parseInt(spell[1]));
-					emp.setDepartment(spell[2]);
-					emp.setDesignation(spell[3]);
-					emp.setCountry(spell[4]);
-				
-					mapcrea.put(empIdInteger,emp);
-				} else {
-					System.out.println("ignoring line: " + line);
-					
-				}
-				System.out.println("Transfer of employee record " + mapcrea.size() );
-			}
+		while ((line = reader.readLine()) != null) {
+		String[] parts = line.split(",");
+		if (parts.length >= 0) {
+		emp = new Employee();
+		emp.setName(parts[0]);
+		emp.setAge(Integer.parseInt(parts[1]));
+		emp.setDepartment(parts[2]);
+		emp.setDesignation(parts[3]);
+		emp.setCountry(parts[4]);
+		  mapcrea.put(empIdInteger, emp);
+		} else {
+		System.out.println("ignoring line: " + line);
+		}
+		System.out.println("Bulk Import is success !!!");
+		}
 		} catch (IOException e) {
-			e.printStackTrace();
+		e.printStackTrace();
 		}
 
-	}
-	
+		}
 	public void Export() {
 		System.out.println("Name of the Thread:" + Thread.currentThread().getName());
 		FileWriter writer = null;
@@ -140,15 +145,15 @@ public void ViewAll(int empIdInteger) {
 				writer = new FileWriter("output.txt");
 				List<Employee> empList = covertLIntoList();
 				for (Employee emp : empList) {
-					writer.write(empIdInteger + ",");
 					writer.write(emp.getName() + ",");
 					writer.write(emp.getAge() + ",");
 					writer.write(emp.getDepartment() + ",");
 					writer.write(emp.getDesignation() + ",");
-					writer.write(emp.getCountry() + ",");
+					writer.write(emp.getCountry() +" ");
 					writer.write("\n");
+			
 				}
-				System.out.println("Transfer of employee record " + mapcrea.size() );
+				System.out.println("Transfer of employee record " + mapcrea.size());
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -159,12 +164,10 @@ public void ViewAll(int empIdInteger) {
 		}
 
 	}
+
 	public List<Employee> covertLIntoList() {
 		ArrayList<Employee> empList = new ArrayList<Employee>(mapcrea.values());
 		return (List<Employee>) empList;
 	}
-	
 
-
-	
 }

@@ -1,123 +1,111 @@
 package empapp;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.TreeMap;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
-import javax.sql.RowSet;
-import javax.sql.rowset.RowSetFactory;
-import javax.sql.rowset.RowSetProvider;
+import dao.EmployeeDaoJdbcImpl;
+import exception.EmployeeException;
+import model.Employee;
+import service.EmployeeServiceArrImpl;
 
 
-public class EmployeeMain {
-	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://localhost:3306/jdbctraining";
 
-	// Database credentials
-	static final String USER = "training";
-	static final String PASS = "training";
+public class EmployeeMain  {
+	public static void main(String[] args){
+		Boolean entered=true;
+		Employee emp = new Employee();
+		Random random = new Random();
+		int empIdInteger = random.nextInt(20);
+		Boolean status;
+		EmployeeServiceArrImpl empser = new EmployeeServiceArrImpl();
+		Scanner scanner = new Scanner(System.in);
+		ExecutorService exeSrvice= Executors.newFixedThreadPool(3);
 
-	public static void main(String[] args) {
-
-		Connection conn = null;
-		Statement stmt = null;
-		PreparedStatement pstmt = null;
-		RowSet rs = null;
-
-		try {
-//			// STEP 2: [OPTIONAL] Register JDBC driver with Driver Manager
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//			System.out.println("MySQL driver registered...");
-			
-			// STEP 3: Open a connection
-			System.out.println("Connecting to database...");
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			conn.setAutoCommit(true); // enable transaction
-
-			System.out.println("Connection estabilished: " + conn);
-
-			// STEP 4: Execute a query
-			System.out.println("Creating RowSet...");
-			
-			// Create RowSet Factory
-			RowSetFactory rsFactory = RowSetProvider.newFactory();
-			
-			// JDBC RowSet
-			rs = rsFactory.createJdbcRowSet();	
-			rs.setUrl(DB_URL);
-			rs.setUsername("training");
-			rs.setPassword("training");
-			
-			// Cached RowSet
-//			rs = rsFactory.createCachedRowSet();
-//			rs.setUrl(DB_URL);
-//			rs.setUsername("training");
-//			rs.setPassword("training");
-			
-			String sql = "SELECT * FROM employee";
-			rs.setCommand(sql);
-			rs.execute();
-			
-			// STEP 5: Extract data from RowSet
-			ResultSetMetaData rsmeta = rs.getMetaData();
-			int cols = rsmeta.getColumnCount();
-
-			// Header
-			for(int i=1; i <= cols; i++) {
-				System.out.print("\t" + rsmeta.getColumnName(i));
-			}
-			System.out.println();			
-			
-			while (rs.next()) {
-			    // each call to next, generates a cursorMoved event
-				// Retrieve by column name
-				int id = rs.getInt("id");
-				int age = rs.getInt("age");
-				String name = rs.getString("name");
-				String designation = rs.getString("designation");
-				String department = rs.getString("department");
-				String country = rs.getString("country");
-			    
-				// Display values
-				System.out.format("\t%d \t%d \t%s \t%s \t%s \t%s\n", id, age, name, designation, department, country);
-			}
-			
-		} catch (SQLException se) {
-			// Handle errors for JDBC
-			se.printStackTrace();
-			try {
-				conn.rollback();
-			} catch (SQLException e) {}
-		} catch (Exception e) {
-			// Handle errors for Class.forName
-			e.printStackTrace();
-			try {
-				conn.rollback();
-			} catch (SQLException sqle) {}			
-		} finally {
-			// finally block used to close resources
-			try {
-				if (rs != null) {
-					rs.close();
+		do {
+			System.out.println("1.  Add Employee");
+			System.out.println("2.  update Employee");
+			System.out.println("3.  Delete Employee");
+			System.out.println("4.  view Employee");
+             System.out.println("5. viewall");
+             System.out.println("6. Import");
+             System.out.println("7. export");
+             System.out.println("8.  statistics");
+			System.out.println("Enter the option: ");
+			int option = scanner.nextInt();
+			switch (option) {
+			case 1:
+				status = empser.create(emp);
+				if (status == true) {
+					System.out.println("Employee has been create successfully !!!");
+				} else
+					System.out.println("Employee has not created");
+				break;
+			case 2:
+				status = empser.update(emp);
+				if (status == true) {
+					System.out.println("Employee has been updated successfully !!!");
+				} else
+					System.out.println("Employee has not updated");
+				break;
+			case 3:
+				status = empser.delete(emp.getEmpId());
+				if (status == true) {
+					System.out.println("Employee has been deleted successfully !!!");
+				} else
+					System.out.println("Employee has not deleted");
+				break;
+			case 4:
+				try {
+					empser.viewData(emp.getEmpId());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			} catch (SQLException se2) {
+				break;
+			case 5:
+				empser.viewAll();
+				break;
+			case 6:
+				Future<Boolean> future = exeSrvice.submit(new Callable<Boolean>() {
+					@Override
+					public Boolean call() throws Exception {
+						Thread.sleep(3000);
+						empser.bulkImport();
+						//future.get();
+						return true;
+					}						
+				});
+				break;
+			case 7:
+				Future<Boolean> future1 = exeSrvice.submit(new Callable<Boolean>() {
+					@Override
+					public Boolean call() throws Exception {
+						Thread.sleep(2000);
+						empser.bulkExport();
+						//future.get();
+						return true;
+					}						
+				});						
+				exeSrvice.shutdown();
+				break;
+				
+			case 8:
+				empser.printStatistics();
+				break;
+			case 9:
+				exeSrvice.shutdown();
+				break;
+			default:
+				System.out.println("Please Enter Valid Input");
+				break;
+
 			}
-			try {
-				if (stmt != null)
-					stmt.close();
-			} catch (SQLException se2) {
-			} // nothing we can do
-			try {
-				if (conn != null)
-					conn.close();
-			} catch (SQLException se) {
-				se.printStackTrace();
-			} // end finally try
-		} // end try
-		System.out.println("Goodbye!");
-	}// end main
-}// end FirstExample
+		} while (entered);
+
+	}
+}

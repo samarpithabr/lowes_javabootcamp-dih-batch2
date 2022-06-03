@@ -53,31 +53,42 @@ class Bank {
 
 public class Demo2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		Bank ban=new Bank(32453234);
 		System.out.println(ban.getAccountNumber());
 		System.out.println(ban.getBalance());
 		ban.deposit(230);
-		try{
-			ban.withdraww(250);
-		}catch (InSuffcientBalanceException1 e) {
-			e.printStackTrace();
+		
+			try {
+				ban.withdraww(250);
+			} catch (InSuffcientBalanceException1 e) {
+				// TODO Auto-generated catch block
+				System.out.println("try1");
+			}
+		
 			// TODO: handle exception
-		}
+		
 		ban.deposit(1000);
-		try {
-			ban.withdraww(2000);
-		}catch (InSuffcientBalanceException1 e) {
+	
+			try {
+				ban.withdraww(2000);
+			} catch (InSuffcientBalanceException1 e) {
+				// TODO Auto-generated catch block
+				System.out.println("try2");
+			}
+		 
 			System.out.println("");
 			// TODO: handle exception
-		}
+		
 		ban.deposit(22);
-		try {
-			ban.withdraww(400);
-		} catch (InSuffcientBalanceException1 e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+			try {
+				ban.withdraww(400);
+			} catch (InSuffcientBalanceException1 e) {
+				// TODO Auto-generated catch block
+				System.out.println("no balance try3");
+			}
+	
 			
 		
 		// TODO Auto-generated method stub

@@ -7,12 +7,10 @@ public interface EmployeeService {
 	
 	
 	
-	
+
 	void create(Employee s);
 	void ViewAll();
 
 	Employee update(int i);
 	
-	
-
 }

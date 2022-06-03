@@ -12,7 +12,7 @@ public interface EmployeeService {
 		int  createEmployee();
         void ViewAll(int emp);
 		void update();
-		
+		void bulkImport();
 	
 
 }

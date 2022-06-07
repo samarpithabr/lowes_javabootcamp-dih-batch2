@@ -9,11 +9,12 @@ public class OptionalDemo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-List<String>=getcities;
+//List<String>=getcities;
+//
+//	}
+//	private static Optional<List<String>> getcities(){
+//		Optional<List<String>> cities=Optional.of(List<String>))
+//	}
 
-	}
-	private static Optional<List<String>> getcities(){
-		Optional<List<string>> cities=Optional.of(List<string>))
-	}
-
+}
 }

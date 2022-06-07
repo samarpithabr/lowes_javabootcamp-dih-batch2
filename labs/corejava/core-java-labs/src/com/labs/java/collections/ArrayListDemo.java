@@ -35,17 +35,17 @@ public class ArrayListDemo {
 		arryList.remove(1);
 		
 		System.out.println("after removal");
-		for (Object a : arryList) {
-			System.out.println(a);
-		}
-		ListIterator<Integer> iter=aryInter.iterator();
-		System.out.println(iter.next());
-		System.out.println(iter.next());
-		System.out.println(iter.previous());
-		System.out.println(iter.previous());
-		if(iter.hasPrevious()) {
-			System.out.println(iter.previous());
-		}
+//		for (Object a : arryList) {
+//			System.out.println(a);
+//		}
+//		ListIterator<Integer> iter=aryInter.iterator();
+//		System.out.println(iter.next());
+//		System.out.println(iter.next());
+//		System.out.println(iter.previous());
+//		System.out.println(iter.previous());
+//		if(iter.hasPrevious()) {
+//			System.out.println(iter.previous());
+//		}
 		
 	}
 

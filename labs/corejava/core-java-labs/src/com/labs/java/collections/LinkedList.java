@@ -9,7 +9,7 @@ public class LinkedList {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		List<Integer> aryInter=new LinkedList<Integer>();
+	List<Integer> aryInter=new ArrayList<Integer>();
 		aryInter.add(32);
 		aryInter.add(322);
 		aryInter.add(54);
@@ -40,15 +40,15 @@ public class LinkedList {
 		for (Object a : arryList) {
 			System.out.println(a);
 		}
-		ListIterator<Integer> iter=aryInter.iterator();
-		System.out.println(iter.next());
-		System.out.println(iter.next());
-		System.out.println(iter.previous());
-		System.out.println(iter.previous());
-		if(iter.hasPrevious()) {
-			System.out.println(iter.previous());
-		}
-		
+//		ListIterator<Integer> iter=aryInter.iterator();
+//		System.out.println(iter.next());
+//		System.out.println(iter.next());
+//		System.out.println(iter.previous());
+//		System.out.println(iter.previous());
+//		if(iter.hasPrevious()) {
+//			System.out.println(iter.previous());
+//		}
+//		
 	}
 
 }

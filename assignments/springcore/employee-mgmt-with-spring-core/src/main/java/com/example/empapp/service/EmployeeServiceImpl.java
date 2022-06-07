@@ -1,4 +1,4 @@
-package service;
+package com.example.empapp.service;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -17,16 +17,23 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import dao.EmployeeDao;
-import dao.EmployeeJdbcImpl;
-import exception.EmployeeException;
-import model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
-public class EmployeeServiceImpl  {
+import com.example.empapp.dao.EmployeeDao;
+import com.example.empapp.dao.EmployeeJdbcImpl;
+import com.example.empapp.exception.EmployeeException;
+import com.example.empapp.model.Employee;
+import com.google.protobuf.Service;
 
 
-	private EmployeeDao EmployeeDaoImpl;
-	EmployeeDao employeeDao;
+
+
+
+public class EmployeeServiceImpl implements EmployeeService {
+@Autowired
+	private EmployeeDao employeeDao;
 
 	Comparator<Employee> EMPLOYEE_NAME_ASC_SORT = new Comparator<Employee>() {
 		@Override
@@ -36,9 +43,7 @@ public class EmployeeServiceImpl  {
 		}
 	};
 
-	public EmployeeServiceImpl() {
-		employeeDao = new EmployeeJdbcImpl();
-	}
+	
 
 	public boolean create(Employee employee) {
 		//validate employee details
@@ -56,6 +61,7 @@ public class EmployeeServiceImpl  {
 	public boolean update(Employee employee) {
 		return employeeDao.update(employee);
 	}
+
 
 	public boolean delete(int id) {
 		return employeeDao.delete(id);

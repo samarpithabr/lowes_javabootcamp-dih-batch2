@@ -10,14 +10,14 @@
 		infrastructure -->
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven  enable-matrix-variables="true" content-negotiation-manager="contentNegotiationManager"/>
 
-	<!-- Enables component scanning on the given and it's child packages -->
-	<context:component-scan base-package="com.examples.empapp" />
+	<context:component-scan base-package="com.examples.spring.web.rest" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/resources/**"
+		location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -29,42 +29,46 @@
 
 	<!-- Custom interceptor to configure session timeout interval -->
 	<mvc:interceptors>
-		<beans:bean class="com.examples.empapp.interceptor.SessionHandler" />
+		<beans:bean
+			class="com.example.empapp.interceptor.SessionHandler" />
 	</mvc:interceptors>
 
 	<!-- EmployeeService bean definition -->
-	<beans:bean id="employeeService"
-		class="com.examples.empapp.service.EmployeeService" />
+<!-- 	<beans:bean id="employeeServiceCol"
+		class="com.lowes.empapp.service.EmployeeServiceColImpl" /> -->
 
 	<!-- Exception handler mapping -->
 	<beans:bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<beans:property name="exceptionMappings">
 			<beans:props>
-				<beans:prop key="com.examples.empapp.exception.LoginException">
+				<beans:prop
+					key="com.lowes.empapp.exception.LoginException">
 					loginError
-				</beans:prop>			
-				<beans:prop key="com.examples.empapp.exception.SpringException">
+				</beans:prop>
+				<beans:prop
+					key="com.lowes.empapp.exception.SpringException">
 					error
 				</beans:prop>
 			</beans:props>
 		</beans:property>
 		<beans:property name="defaultErrorView" value="error" />
 	</beans:bean>
-<beans:bean id="employeeService"
-		class="com.examples.empapp.service.EmployeeServiceImpl" />
+
+	<beans:bean id="employeeService"
+		class="com.lowes.empapp.service.EmployeeServiceImpl" />
 	<beans:bean id="employeeDao"
-		class="com.examples.empapp.dao.EmployeeDaoJdbcImpl">	
+		class="com.lowes.empapp.dao.EmployeeDaoJdbcImpl">	
 		
 	</beans:bean>
 
 	<beans:bean id="userService"
-		class="com.examples.empapp.service.UserServiceImpl" />
+		class="com.example.empapp.service.UserServiceImpl" />
 	<beans:bean id="userDao"
-		class="com.examples.empapp.dao.UserDaoImpl" />
+		class="com.example.empapp.dao.UserDaoImpl" />
 
 	<beans:bean id="jdbcTemplate"
-		class="org.springframework.jdbc.core.JdbcTemplate">
+		class="com.example.empapp.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
 
@@ -77,5 +81,6 @@
 		<beans:property name="username" value="training" />
 		<beans:property name="password" value="training" />
 	</beans:bean>
+
 
 </beans:beans>

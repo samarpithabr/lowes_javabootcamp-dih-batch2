@@ -1,7 +1,5 @@
 package com.spring.rest.controller;
 
-
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -23,13 +21,9 @@ import com.spring.rest.model.Employee;
 import com.spring.rest.model.ResponseMessage;
 import com.spring.rest.service.EmployeeServiceImpl;
 
-
-
-
-
 @RestController
 @RequestMapping("/employee")
-public class EmployeeController{
+public class EmployeeController {
 
 	@Autowired
 	EmployeeServiceImpl empService;
@@ -45,7 +39,7 @@ public class EmployeeController{
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(employeeCreated.getEmpId()).toUri();
-		response = new ResponseMessage("created","aajsdhkjd");
+		response = new ResponseMessage("created", "aajsdhkjd");
 		return ResponseEntity.created(location).body(response);
 	}
 

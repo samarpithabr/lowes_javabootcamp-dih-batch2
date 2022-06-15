@@ -1,0 +1,58 @@
+2022-06-16 00:01:22.883  WARN 17844 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.example.empapp.model.ResponseMessage> com.example.empapp.controller.EmployeeController.create(com.example.empapp.model.Employee) throws java.net.URISyntaxException,com.example.empapp.exception.EmployeeException: [Field error in object 'employee' on field 'age': rejected value [4]; codes [Min.employee.age,Min.age,Min.int,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.age,age]; arguments []; default message [age],18]; default message [must be greater than or equal to 18]] ]
+2022-06-16 00:04:52.553  INFO 17844 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-06-16 00:04:52.575  INFO 17844 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-06-16 00:04:52.608  INFO 17844 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-06-16 00:04:52.969  INFO 17844 --- [restartedMain] .e.EmployeeMgmtWithSpringBootApplication : Starting EmployeeMgmtWithSpringBootApplication using Java 17.0.2 on DESKTOP-6O3RMHL with PID 17844 (C:\Train\lowes_javabootcamp-dih-batch2\assignments\springboot\employee-mgmt-with-spring-boot\target\classes started by Sharath in C:\Train\lowes_javabootcamp-dih-batch2\assignments\springboot\employee-mgmt-with-spring-boot)
+2022-06-16 00:04:52.969  INFO 17844 --- [restartedMain] .e.EmployeeMgmtWithSpringBootApplication : The following 1 profile is active: "dev"
+2022-06-16 00:04:53.384  INFO 17844 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-16 00:04:53.398  INFO 17844 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 1 JPA repository interfaces.
+2022-06-16 00:04:53.511  INFO 17844 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-16 00:04:53.511  INFO 17844 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-16 00:04:53.511  INFO 17844 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-16 00:04:53.535  INFO 17844 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-16 00:04:53.535  INFO 17844 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 562 ms
+2022-06-16 00:04:53.603  INFO 17844 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-16 00:04:53.609  INFO 17844 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-06-16 00:04:53.637  INFO 17844 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-06-16 00:04:53.638  INFO 17844 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-16 00:04:53.688  INFO 17844 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-16 00:04:53.689  INFO 17844 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-16 00:04:53.760  WARN 17844 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-16 00:04:53.971  INFO 17844 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-06-16 00:04:53.973  INFO 17844 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-06-16 00:04:53.987  INFO 17844 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-16 00:04:53.995  INFO 17844 --- [restartedMain] .e.EmployeeMgmtWithSpringBootApplication : Started EmployeeMgmtWithSpringBootApplication in 1.08 seconds (JVM running for 497.248)
+2022-06-16 00:04:53.998  INFO 17844 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-06-16 00:04:54.767  INFO 17844 --- [RMI TCP Connection(21)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-06-16 00:04:54.777  INFO 17844 --- [RMI TCP Connection(21)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-06-16 00:04:54.778  INFO 17844 --- [RMI TCP Connection(21)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-06-16 00:04:54.782  INFO 17844 --- [RMI TCP Connection(21)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2022-06-16 00:04:58.806  INFO 1344 --- [restartedMain] .e.EmployeeMgmtWithSpringBootApplication : Starting EmployeeMgmtWithSpringBootApplication using Java 17.0.2 on DESKTOP-6O3RMHL with PID 1344 (C:\Train\lowes_javabootcamp-dih-batch2\assignments\springboot\employee-mgmt-with-spring-boot\target\classes started by Sharath in C:\Train\lowes_javabootcamp-dih-batch2\assignments\springboot\employee-mgmt-with-spring-boot)
+2022-06-16 00:04:58.806  INFO 1344 --- [restartedMain] .e.EmployeeMgmtWithSpringBootApplication : The following 1 profile is active: "dev"
+2022-06-16 00:04:58.866  INFO 1344 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-16 00:04:58.866  INFO 1344 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-16 00:04:59.582  INFO 1344 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-16 00:04:59.622  INFO 1344 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 1 JPA repository interfaces.
+2022-06-16 00:05:00.127  INFO 1344 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-16 00:05:00.135  INFO 1344 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-16 00:05:00.136  INFO 1344 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-16 00:05:00.319  INFO 1344 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-16 00:05:00.320  INFO 1344 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1454 ms
+2022-06-16 00:05:00.512  INFO 1344 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-16 00:05:00.562  INFO 1344 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-16 00:05:00.719  INFO 1344 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-16 00:05:00.808  INFO 1344 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-16 00:05:01.154  INFO 1344 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-16 00:05:01.177  INFO 1344 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-16 00:05:02.189  INFO 1344 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-16 00:05:02.199  INFO 1344 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-16 00:05:02.605  WARN 1344 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-16 00:05:03.243  INFO 1344 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-06-16 00:05:03.250  INFO 1344 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-06-16 00:05:03.308  INFO 1344 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-16 00:05:03.322  INFO 1344 --- [restartedMain] .e.EmployeeMgmtWithSpringBootApplication : Started EmployeeMgmtWithSpringBootApplication in 4.827 seconds (JVM running for 5.589)
+2022-06-16 00:05:05.915  INFO 1344 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-16 00:05:05.916  INFO 1344 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-16 00:05:05.917  INFO 1344 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-06-16 00:06:53.129  WARN 1344 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.example.empapp.model.ResponseMessage> com.example.empapp.controller.EmployeeController.create(com.example.empapp.model.Employee) throws java.net.URISyntaxException,com.example.empapp.exception.EmployeeException: [Field error in object 'employee' on field 'age': rejected value [0]; codes [Min.employee.age,Min.age,Min.int,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.age,age]; arguments []; default message [age],18]; default message [must be greater than or equal to 18]] ]
+2022-06-16 00:07:04.116  WARN 1344 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character (',' (code 44)): expected a value; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character (',' (code 44)): expected a value<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 3, column: 9]]

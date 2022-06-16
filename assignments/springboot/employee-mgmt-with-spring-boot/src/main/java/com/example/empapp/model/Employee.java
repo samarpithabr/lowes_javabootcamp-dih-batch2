@@ -22,7 +22,7 @@ public class Employee {
 	int id;
 	@NotEmpty(message = "Name field cannot be null or empty.")
 	@NotNull(message = "Name field cannot be null or empty.")
-	@Size(max = 20, message = "Name should not exceed more than 20 chars")
+	@Size(max = 15, message = "Name should not exceed more than 15 chars")
 	String name;
 	@NotNull(message = "Age field cannot be null or empty.")
 	@Min(18)

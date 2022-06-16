@@ -17,8 +17,16 @@ public class Employee {
 	// default constructor
 	public Employee() {
 
-		// this(101, "Hema", 24, "Developer", "IT", "India", "28/05/2022");
+	}
 
+	public Employee(int id, String name, Integer age, String designation, String department, String country) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.designation = designation;
+		this.department = department;
+		this.country = country;
 	}
 
 	@Override

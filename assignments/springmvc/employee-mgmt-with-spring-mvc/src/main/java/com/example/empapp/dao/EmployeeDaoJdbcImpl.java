@@ -26,7 +26,7 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
     DataSource dataSource;
 
 	Connection conn = null;
-	Statement stmt = null;
+	java.sql.Statement stmt = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 

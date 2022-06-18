@@ -4,7 +4,7 @@
   <artifactId>employee-mgmt-with-spring-mvc</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <properties>
+ <properties>
 		<java-version>11</java-version>
 		<org.springframework-version>5.3.20</org.springframework-version>
 		<javax.servlet-api-version>4.0.0</javax.servlet-api-version>

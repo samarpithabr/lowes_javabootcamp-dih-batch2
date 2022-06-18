@@ -61,8 +61,7 @@ public class EmployeeController {
 
 		Employee employeeCreated = employeeService.create(employee);
 		if (employeeCreated != null) {
-			// Build newly created Employee resource URI
-			// http://localhost:8080/employee-mgmt-spring-boot/employees/{id}
+			
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 					.buildAndExpand(employeeCreated.getId()).toUri();
 			ResponseMessage response = new ResponseMessage("Success", "Employee Created Successfully");
@@ -116,7 +115,7 @@ public class EmployeeController {
 			employeeService.delete(id);
 			ResponseMessage response = new ResponseMessage("Success", "Employee Deleted Successfully");
 			return ResponseEntity.created(null).body(response);
-			//return ResponseEntity.ok().body("Employee deleted succcessfully");
+			
 		} else {
 			logger.error("Employee not found for id :: " + id + " Delete has not happened");
 			return ResponseEntity.notFound().build();

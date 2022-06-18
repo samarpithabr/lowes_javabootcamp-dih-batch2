@@ -24,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.empapp.exception.EmployeeException;
 import com.example.empapp.model.Employee;
 import com.example.empapp.service.EmployeeServiceImpl;
-
 @Controller
 @RequestMapping(value = "/employee")
 public class EmployeeController {

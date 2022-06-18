@@ -10,9 +10,11 @@
 		infrastructure -->
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<mvc:annotation-driven  enable-matrix-variables="true" content-negotiation-manager="contentNegotiationManager"/>
+	<mvc:annotation-driven />
 
-	<context:component-scan base-package="com.examples.spring.web.rest" />
+	<!-- Enables component scanning on the given and it's child packages -->
+	<context:component-scan
+		base-package="com.example.empapp" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
@@ -43,11 +45,11 @@
 		<beans:property name="exceptionMappings">
 			<beans:props>
 				<beans:prop
-					key="com.lowes.empapp.exception.LoginException">
+					key="com.example.empapp.exception.LoginException">
 					loginError
 				</beans:prop>
 				<beans:prop
-					key="com.lowes.empapp.exception.SpringException">
+					key="com.example.empapp.exception.SpringException">
 					error
 				</beans:prop>
 			</beans:props>
@@ -56,9 +58,9 @@
 	</beans:bean>
 
 	<beans:bean id="employeeService"
-		class="com.lowes.empapp.service.EmployeeServiceImpl" />
+		class="com.example.empapp.service.EmployeeServiceImpl" />
 	<beans:bean id="employeeDao"
-		class="com.lowes.empapp.dao.EmployeeDaoJdbcImpl">	
+		class="com.example.empapp.dao.EmployeeDaoJdbcImpl">	
 		
 	</beans:bean>
 
@@ -68,7 +70,7 @@
 		class="com.example.empapp.dao.UserDaoImpl" />
 
 	<beans:bean id="jdbcTemplate"
-		class="com.example.empapp.jdbc.core.JdbcTemplate">
+		class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
 

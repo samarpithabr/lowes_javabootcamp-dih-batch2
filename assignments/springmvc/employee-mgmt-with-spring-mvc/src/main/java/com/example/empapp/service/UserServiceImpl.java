@@ -8,15 +8,15 @@ import com.example.empapp.model.User;
 
 public class UserServiceImpl implements UserService {
 
-  @Autowired
-  public UserDao userDao;
+	  @Autowired
+	  public UserDao userDao;
 
-  public int register(User user) {
-    return userDao.register(user);
-  }
+	  public int register(User user) {
+	    return userDao.register(user);
+	  }
 
-  public User validateUser(Login login) {
-    return userDao.validateUser(login);
-  }
+	  public User validateUser(Login login) {
+	    return userDao.validateUser(login);
+	  }
 
-}
+	}

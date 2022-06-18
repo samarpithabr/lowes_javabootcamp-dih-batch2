@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.example.empapp.model.Employee;
-import com.mysql.cj.xdevapi.Statement;
+
+
 
 @Repository
 @Qualifier("employeeDao")
@@ -23,10 +25,10 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 	// public static DataSource dataSource;
 
 	@Autowired
-    DataSource dataSource;
+	DataSource dataSource;
 
 	Connection conn = null;
-	java.sql.Statement stmt = null;
+	Statement stmt = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
@@ -42,16 +44,16 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 		System.out.println("Connection created successfully " + conn);
 	}
 
-	 public void closeConnection(Connection connection) {
-	        if (connection != null) {
-	            try {
-	                connection.close();
-	            } catch (SQLException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
-	
+	public void closeConnection(Connection connection) {
+		if (connection != null) {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	@Override
 	public boolean createEmployee(Employee emp) {
 		boolean status = false;
@@ -67,7 +69,7 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 			// e.printStackTrace();
 			System.out.println("Error occurred while inserting Employee data");
 		}
-				
+
 		return status;
 	}
 

@@ -22,4 +22,3 @@ public interface EmployeeDao {
 	public List<Employee> displayEmployees();
 
 }
-

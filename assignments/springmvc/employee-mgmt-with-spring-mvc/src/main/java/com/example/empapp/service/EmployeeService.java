@@ -5,7 +5,11 @@ import java.util.List;
 import com.example.empapp.exception.EmployeeException;
 import com.example.empapp.model.Employee;
 
+
+
+
 public interface EmployeeService {
+
 	public boolean createEmployee(Employee emp);
 
 	public boolean updateEmployee(Employee emp);
@@ -15,4 +19,5 @@ public interface EmployeeService {
 	public Employee get(int empId) throws EmployeeException;
 
 	public List<Employee> displayEmployees();
+	
 }

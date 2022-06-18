@@ -14,12 +14,20 @@ public class Employee {
 
 	private String country;
 
-	// default constructor
+
 	public Employee() {
+
+
 
 	}
 
-	public Employee(int id, String name, Integer age, String designation, String department, String country) {
+	@Override
+	public String toString() {
+		return id + "\t" + name + "\t" + age + "\t" + designation + "\t" + department + "\t" + country;
+
+	}
+
+	public Employee(int id, String name, int age, String designation, String department, String country) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -27,11 +35,6 @@ public class Employee {
 		this.designation = designation;
 		this.department = department;
 		this.country = country;
-	}
-
-	@Override
-	public String toString() {
-		return id + "\t" + name + "\t" + age + "\t" + designation + "\t" + department + "\t" + country;
 
 	}
 
@@ -49,14 +52,6 @@ public class Employee {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
 	}
 
 	public String getDesignation() {
@@ -82,4 +77,13 @@ public class Employee {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
+	public Integer getAge() {
+		return age;
 	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+}

@@ -9,7 +9,10 @@ import com.example.empapp.dao.EmployeeDaoJdbcImpl;
 import com.example.empapp.exception.EmployeeException;
 import com.example.empapp.model.Employee;
 
-public class EmployeeServiceImpl {
+
+
+public class EmployeeServiceImpl  {
+
 	@Autowired(required=true)
 	public EmployeeDao employeeDao;
 
@@ -55,5 +58,4 @@ public class EmployeeServiceImpl {
 
 		return employeeDao.displayEmployees();
 	}	
-
 }

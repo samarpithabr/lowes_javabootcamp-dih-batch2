@@ -62,8 +62,8 @@ public class FundTransferServiceTest {
 		trans1.setId(1);
 		trans1.setAmount(5000.00);
 		trans1.setDescription("testing1");
-		trans1.setSourceAccountId(1);
-		trans1.setDestinationAccountId(2);
+		trans1.setSource_account_id(1);
+		trans1.setTarget_accound_id(2);
 		trans1.setStatus("CREATED");
 		trans1.setType("DEBIT");
 		transactions.add(trans1);
@@ -73,8 +73,8 @@ public class FundTransferServiceTest {
 		trans2.setId(2);
 		trans2.setAmount(3000.00);
 		trans2.setDescription("testing 2");
-		trans2.setSourceAccountId(1);
-		trans2.setDestinationAccountId(2);
+		trans2.setSource_account_id(1);
+		trans2.setTarget_accound_id(2);
 		trans2.setStatus("CREATED");
 		trans2.setType("CREDIT");
 		transactions.add(trans2);
@@ -137,8 +137,8 @@ public class FundTransferServiceTest {
 		trans1.setId(5);
 		trans1.setAmount(3000.00);
 		trans1.setDescription("testingUpdate");
-		trans1.setSourceAccountId(1);
-		trans1.setDestinationAccountId(2);
+		trans1.setSource_account_id(1);
+		trans1.setTarget_accound_id(2);
 		trans1.setStatus("CREATED");
 		trans1.setType("DEBIT");
 		

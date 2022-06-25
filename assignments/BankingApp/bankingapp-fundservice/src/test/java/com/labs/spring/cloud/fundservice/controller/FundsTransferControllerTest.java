@@ -46,8 +46,8 @@ public class FundsTransferControllerTest {
  	ft1.setId(1);
  	ft1.setAmount(5000.00); 
  	ft1.setDescription("fundtransfer1");
- 	ft1.setSourceAccountId(1); 
- 	ft1.setDestinationAccountId(2);
+ 	ft1.setSource_account_id(1); 
+ 	ft1.setTarget_accound_id(2);
  	ft1.setStatus("CREATED");
  	ft1.setType("DEBIT");
  	fts.add(ft1);
@@ -57,8 +57,8 @@ public class FundsTransferControllerTest {
 		ft2.setId(2);
 		ft2.setAmount(3000.00); 
 		ft2.setDescription("fundtransfer2");
-		ft2.setSourceAccountId(2); 
-		ft2.setDestinationAccountId(3);
+		ft2.setSource_account_id(2); 
+		ft2.setTarget_accound_id(3);
 		ft2.setStatus("CREATED");
 		ft2.setType("DEBIT");
  	fts.add(ft2);

@@ -9,8 +9,12 @@ import com.labs.spring.cloud.transaction.model.ResponseMessage;
 
 
 
+
+
+
 @ControllerAdvice
 public class TransactionExceptionhandler {
+
 	@ExceptionHandler(Exception.class)
 	private ResponseEntity<ResponseMessage> handleGenericException(Exception ex)
 	{
@@ -23,7 +27,5 @@ public class TransactionExceptionhandler {
 		response.setMessage(ex.getMessage());
 		return ResponseEntity.badRequest().body(response);
 		
-	}
-	
-
+	}	
 }

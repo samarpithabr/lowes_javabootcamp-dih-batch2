@@ -9,28 +9,20 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.labs.spring.cloud.transaction.model.Account;
+
 import com.labs.spring.cloud.transaction.model.Transaction;
 import com.labs.spring.cloud.transaction.repository.TransactionRepository;
-
 @Service
 public class TransactionService {
 
-
 	@Autowired
 	TransactionRepository transactionRepo;
-	
+
 	@Autowired
 	KafkaTemplate<String, String> kafkaTemplate;
-	
-	public Integer create(Transaction transaction) {
+
+	public Integer add(Transaction transaction) {
 		transactionRepo.save(transaction);
-	
-		
-		String msg = transaction.getId() + "," + transaction.getId() + "," + String.valueOf(transaction.getType());
-		
-		kafkaTemplate.send("Transcation_CREATED", msg);
-		
 		return transaction.getId();
 	}
 
@@ -38,45 +30,83 @@ public class TransactionService {
 		transactionRepo.save(transaction);
 	}
 
-	public Transaction get(Account accountnumber) {
-		Optional<Transaction> emp = transactionRepo.findById(accountnumber); 
-		return  emp.isPresent() ? emp.get() : null;
+	public Transaction get(Integer id) {
+		Optional<Transaction> trans = transactionRepo.findById(id);
+		return trans.isPresent() ? trans.get() : null;
 	}
 
-	public void delete(Account empId) {
-		transactionRepo.deleteById(empId);
+	public void delete(Integer id) {
+		transactionRepo.deleteById(id);
 	}
 
 	public List<Transaction> list() {
 		return transactionRepo.findAll();
 	}
-	
-	public void deleteAll()
-	{
+
+	public void deleteAll() {
 		transactionRepo.deleteAll();
 	}
-	
-//    @KafkaListener(topics = "transcation_APPROVED", groupId="transaction-service")
-//    public void listenTransactionApproval(ConsumerRecord<?, ?> cr) throws Exception {
-//        System.out.println("###################Transaction Approved Received: " + cr.value());
-//        // Logic to update transaction with APPROVED status
-//        Account approvedaccountnumber = new Account();
-//        Transaction transaction = transactionRepo.findById(approvedaccountnumber).get();
-//        transaction.setStatus("APPROVED");
-//        
-//        // Save Transaction
-//        transactionRepo.save(transaction);
-//    }
-//    
-//    @KafkaListener(topics = "transaction_REJECTED", groupId="transaction-service")
-//    public void listenTransactionRejection(ConsumerRecord<?, ?> cr) throws Exception {
-//        System.out.println("###################Transaction Rejected Received: " + cr.value());
-//        // Logic to update transaction with REJECTED status
-//        Account rejectedaccountnumber = new Account();
-//        Transaction transaction = transactionRepo.findById(rejectedaccountnumber).get();
-//        transaction.setStatus("REJECTED");
-//        
-//        // Save Transaction
-//        transactionRepo.save(transaction);
-//    }    
+
+	@KafkaListener(topics = "FUNDTRANSFER_APPROVED", groupId = "transaction-service")
+	public void listenTransApproval(ConsumerRecord<?, ?> cr) throws Exception {
+		System.out.println("###################Transaction Approved Received: " + cr.value());
+		// Logic to update order with APPROVED status
+		Integer approvedOrderId = new Integer(cr.value().toString());
+		Transaction order = transactionRepo.findById(approvedOrderId).get();
+		order.setStatus("APPROVED");
+
+		// Save Order
+		transactionRepo.save(order);
+	}
+
+	@KafkaListener(topics = "FUNDTRANSFER_REJECTED", groupId = "transaction-service")
+	public void listenTransactionRejection(ConsumerRecord<?, ?> cr) throws Exception {
+		System.out.println("###################Transaction Rejected Received: " + cr.value());
+		// Logic to update order with REJECTED status
+		Integer rejectedOrderId = new Integer(cr.value().toString());
+		Transaction transaction = transactionRepo.findById(rejectedOrderId).get();
+		
+		Transaction transNew = transaction;
+		transNew.setStatus("REJECTED");
+		transNew.setDescription("Refund: from transaction id reference " + rejectedOrderId);
+
+		transactionRepo.save(transNew);
+
+	}
+
+	@KafkaListener(topics = "FUNDTRANSFER_CREATED", groupId = "transaction-service")
+	public void listenTransactionCreation(ConsumerRecord<?, ?> cr) throws Exception {
+		System.out.println("###################Transaction Created: " + cr.value());
+
+		String msg = (String) cr.value();
+		String[] tokens = msg.split(",");
+		String transactionId = tokens[0];
+		String fromacctId = tokens[1];
+		String toaccountId = tokens[2];
+		String amount = tokens[3];
+		String transType = tokens[4];
+		String desc = tokens[5];
+		String transId = tokens[6];
+
+		double dAmount = Double.valueOf(amount);
+
+		Transaction transNew = new Transaction();
+		transNew.setAmount(dAmount);
+		transNew.setDescription(msg);
+		transNew.setFromaccountid(Integer.parseInt(fromacctId));
+		transNew.setStatus("CREATED");
+		transNew.setToaccountid(Integer.parseInt(toaccountId));
+		transNew.setType(transType);
+		transNew.setDescription(desc);
+
+		int id = add(transNew);
+
+		String actmsg = transNew.getId() + "," + transNew.getFromaccountid() + "," + transNew.getToaccountid() + ","
+				+ String.valueOf(transNew.getAmount()) + "," + transNew.getType() + "," + transNew.getDescription()
+				+ "," + transNew.getId();
+
+		kafkaTemplate.send("FUNDTRANSFER_PROCESSING", actmsg);
+
+	}
+
 }

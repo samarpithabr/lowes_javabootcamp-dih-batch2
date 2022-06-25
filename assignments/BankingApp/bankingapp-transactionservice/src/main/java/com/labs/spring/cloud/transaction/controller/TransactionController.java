@@ -17,22 +17,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.labs.spring.cloud.transaction.model.Account;
+
 import com.labs.spring.cloud.transaction.model.ResponseMessage;
 import com.labs.spring.cloud.transaction.model.Transaction;
 import com.labs.spring.cloud.transaction.service.TransactionService;
 
-
 @RestController
+@RequestMapping("/transactions")
 public class TransactionController {
+
 	@Autowired
-	TransactionService transactionService;
+	TransactionService transactionservice;
 
 //	Create Transaction 	POST	/transactions
-//	Get All Transactions	GET		/transactions
+//	Get All transactions	GET		/transactions
 //	Update Transaction	PUT		/transactions/{id}
 //	Delete Transaction	DELETE	/transactions/{id}
 //	Get Transaction		GET		/transactions/{id}
@@ -40,31 +42,31 @@ public class TransactionController {
 	@PostMapping
 	public ResponseEntity<ResponseMessage> createTransaction(@RequestBody @Valid Transaction transaction) throws Exception {
 
-		transactionService.create(transaction);
+		transactionservice.add(transaction);
 
 		// Getting current resource path
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(transaction.getId())
 				.toUri();
 
-		return ResponseEntity.created(location).body(this.getResponse(transaction.getAccountNumber(), "Transaction Created"));
+		return ResponseEntity.created(location).body(this.getResponse(transaction.getId(), "Transaction Created"));
 	}
 
 	@GetMapping
 	public List<Transaction> getAll() {
-		return transactionService.list();
+		return transactionservice.list();
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<ResponseMessage> updateTransaction(@RequestBody @Valid Transaction transaction, @PathVariable Account id) {
-		transaction.setAccountNumber(id);
-		transactionService.update(transaction);
+	public ResponseEntity<ResponseMessage> updateTransaction(@RequestBody @Valid Transaction transaction, @PathVariable Integer id) {
+		transaction.setId(id);
+		transactionservice.update(transaction);
 
-		return ResponseEntity.ok().body(this.getResponse(transaction.getAccountNumber(), "Transaction Updated"));
+		return ResponseEntity.ok().body(this.getResponse(transaction.getId(), "Transaction Updated"));
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<ResponseMessage> deleteTransaction(@PathVariable Account id) {
-		transactionService.delete(id);
+	public ResponseEntity<ResponseMessage> deleteTransaction(@PathVariable Integer id) {
+		transactionservice.delete(id);
 
 		ResponseMessage response = getResponse(id, "Transaction Deleted");
 
@@ -72,13 +74,13 @@ public class TransactionController {
 	}
 
 	@GetMapping("/{id}")
-	public Transaction getTransaction(@PathVariable Account id) {
-		return transactionService.get(id);
+	public Transaction getTransaction(@PathVariable Integer id) {
+		return transactionservice.get(id);
 	}
 
-	private ResponseMessage getResponse(Account id, String message) {
+	private ResponseMessage getResponse(Integer id, String message) {
 		ResponseMessage response = new ResponseMessage();
-		response.setId(null);
+		response.setId(id);
 		response.setStatus(HttpStatus.OK.name());
 		response.setStatusCode(HttpStatus.OK.value());
 		response.setMessage(message);
@@ -101,4 +103,3 @@ public class TransactionController {
 		return ResponseEntity.badRequest().body(this.getErrorResponse(-1, error.getDefaultMessage()));
 	}
 }
-

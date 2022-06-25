@@ -27,7 +27,7 @@ import com.labs.spring.cloud.transaction.model.Transaction;
 import com.labs.spring.cloud.transaction.service.TransactionService;
 
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/transaction")
 public class TransactionController {
 
 	@Autowired

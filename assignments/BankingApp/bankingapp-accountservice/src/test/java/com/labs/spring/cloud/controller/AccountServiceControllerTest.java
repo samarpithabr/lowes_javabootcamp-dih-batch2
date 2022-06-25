@@ -129,26 +129,26 @@ public class AccountServiceControllerTest {
  
  
 
- @Test
- public void shouldReturnAllAccounts() {
-
-     Mockito.when(acctService.getAccounts()).thenReturn(accounts);
-
-     // REST Template
-     // Step 1: Create Request
-     // Step 2: Send Request to Endpoint
-     // Step 3: Receive the Response
-     ResponseEntity<Object> response = restTemp.getForEntity("/accounts", Object.class);
-
-     List<Account> accounts = (List) response.getBody();
-
-     System.out.println("Response: " + accounts);
-
-     // Step 4: Validate the Response
-     Assertions.assertThat(response).isNotNull();
-     Assertions.assertThat(accounts.size()).isEqualTo(2);
-   
- }
+// @Test
+// public void shouldReturnAllAccounts() {
+//
+//     Mockito.when(acctService.getAccounts()).thenReturn(accounts);
+//
+//     // REST Template
+//     // Step 1: Create Request
+//     // Step 2: Send Request to Endpoint
+//     // Step 3: Receive the Response
+//     ResponseEntity<Object> response = restTemp.getForEntity("/accounts", Object.class);
+//
+//     List<Account> accounts = (List) response.getBody();
+//
+//     System.out.println("Response: " + accounts);
+//
+//     // Step 4: Validate the Response
+//     Assertions.assertThat(response).isNotNull();
+//     Assertions.assertThat(accounts.size()).isEqualTo(2);
+//   
+// }
  
  @Test
  public void shouldReturnAccountBasedonGivenId() throws AccountException, URISyntaxException {

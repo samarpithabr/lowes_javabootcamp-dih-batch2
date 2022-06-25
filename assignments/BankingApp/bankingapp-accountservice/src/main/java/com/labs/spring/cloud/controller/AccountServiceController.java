@@ -32,7 +32,7 @@ import com.labs.spring.cloud.model.Account;
 import com.labs.spring.cloud.service.AccountService;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/account")
 public class AccountServiceController {
 	private static Logger log = LoggerFactory.getLogger(AccountServiceController.class);
 

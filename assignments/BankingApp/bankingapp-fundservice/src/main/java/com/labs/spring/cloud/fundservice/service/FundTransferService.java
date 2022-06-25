@@ -38,7 +38,7 @@ public class FundTransferService {
 		fundTransRepo.save(ft);
 		int transId =0;
 		
-		String msg = ft.getId() + "," + ft.getSourceAccountId() + "," + ft.getDestinationAccountId() + "," + String.valueOf(ft.getAmount()) + "," + ft.getType()  + "," + ft.getDescription() + "," + transId ;
+		String msg = ft.getId() + "," + ft.getSource_account_id()+ "," + ft.getTarget_accound_id() + "," + String.valueOf(ft.getAmount()) + "," + ft.getType()  + "," + ft.getDescription() + "," + transId ;
 		
 		kafkaTemplate.send("FUNDTRANSFER_CREATED", msg);
 		

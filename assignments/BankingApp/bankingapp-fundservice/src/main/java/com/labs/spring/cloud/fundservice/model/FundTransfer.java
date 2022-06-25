@@ -13,13 +13,12 @@ public class FundTransfer {
 	@GeneratedValue
 	private int id;
 	private String description;
-	private Integer sourceAccountId;
-	private Integer destinationAccountId;
+	private Integer source_account_id;
+	private Integer target_accound_id;
 	private Double amount;
-	private Integer	transactionId;
+
 	private String status;
 	private String type;
-	
 	public int getId() {
 		return id;
 	}
@@ -32,29 +31,23 @@ public class FundTransfer {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getSourceAccountId() {
-		return sourceAccountId;
+	public Integer getSource_account_id() {
+		return source_account_id;
 	}
-	public void setSourceAccountId(Integer sourceAccountId) {
-		this.sourceAccountId = sourceAccountId;
+	public void setSource_account_id(Integer source_account_id) {
+		this.source_account_id = source_account_id;
 	}
-	public Integer getDestinationAccountId() {
-		return destinationAccountId;
+	public Integer getTarget_accound_id() {
+		return target_accound_id;
 	}
-	public void setDestinationAccountId(Integer destinationAccountId) {
-		this.destinationAccountId = destinationAccountId;
+	public void setTarget_accound_id(Integer target_accound_id) {
+		this.target_accound_id = target_accound_id;
 	}
 	public Double getAmount() {
 		return amount;
 	}
 	public void setAmount(Double amount) {
 		this.amount = amount;
-	}
-	public Integer getTransactionId() {
-		return transactionId;
-	}
-	public void setTransactionId(Integer transactionId) {
-		this.transactionId = transactionId;
 	}
 	public String getStatus() {
 		return status;
@@ -68,6 +61,6 @@ public class FundTransfer {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-
+	
+	
 }

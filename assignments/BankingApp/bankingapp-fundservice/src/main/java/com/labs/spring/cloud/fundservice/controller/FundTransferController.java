@@ -26,7 +26,7 @@ import com.labs.spring.cloud.fundservice.model.ResponseMessage;
 import com.labs.spring.cloud.fundservice.service.FundTransferService;
 
 @RestController
-@RequestMapping("/fundtransfers")
+@RequestMapping("/funds_transfer")
 public class FundTransferController {
 
 	@Autowired

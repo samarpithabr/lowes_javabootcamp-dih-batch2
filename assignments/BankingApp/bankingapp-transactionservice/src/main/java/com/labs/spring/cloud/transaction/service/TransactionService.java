@@ -92,7 +92,7 @@ public class TransactionService {
 
 		Transaction transNew = new Transaction();
 		transNew.setAmount(dAmount);
-		transNew.setDescription(msg);
+		transNew.setDescription(desc);
 		transNew.setFromaccountid(Integer.parseInt(fromacctId));
 		transNew.setStatus("CREATED");
 		transNew.setToaccountid(Integer.parseInt(toaccountId));
